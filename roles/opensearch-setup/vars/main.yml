@@ -3,9 +3,5 @@
 clusterName: "opensearch-cluster"
 nodeName: "{{ inventory_hostname }}"
 networkHost: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
-#interim_string: "{% for host in groups['all'] %} {{hostvars[host].ansible_eth0.ipv4.address | to_json}} {% endfor %}"
-#nodesIPv4: "{{ interim_string.split() }}"
-#["{{ value | list | join ('\',\'') }}"]
-
-interim_string: "{% for host in groups['all'] %} {{hostvars[host].ansible_eth0.ipv4.address | list | join ('\',\'') }} {% endfor %}"
-nodesIPv4: "{{ interim_string }}"
+interim_string: "{% for host in groups['all'] %}{{hostvars[host].ansible_eth0.ipv4.address}} {% endfor %}"
+nodesIPv4: "{{ interim_string.split() }}"
