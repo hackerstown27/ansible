@@ -1,0 +1,18 @@
+---
+# tasks file for opensearch-dashboard-setup
+
+- name: "Add Opensearch Dashboard to Yum"
+  command: sudo curl -SL https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/2.x/opensearch-dashboards-2.x.repo -o /etc/yum.repos.d/opensearch-dashboards-2.x.repo
+
+- name: "Install Opensearch Dashboard"
+  yum:
+    name: opensearch-dashboards
+    state: latest
+    disable_gpg_check: yes
+
+- name: "Configure Opensearch Dashboard"
+  template:
+    src: ../templates/opensearch_dashboards.yml.j2
+    dest: /etc/opensearch-dashboards/opensearch_dashboards.yml
+  notify:
+      - Restart Opensearch Dashboard

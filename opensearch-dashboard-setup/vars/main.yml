@@ -1,0 +1,5 @@
+---
+# vars file for opensearch-dashboard-setup
+serverHost: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+interim_string: "{% for host in groups['all'] %}https://{{hostvars[host].ansible_eth0.ipv4.address}}:9200 {% endfor %}"
+opensearchHosts: "{{ interim_string.split() }}"

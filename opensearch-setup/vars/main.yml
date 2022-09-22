@@ -1,0 +1,7 @@
+---
+# vars file for opensearch-setup
+clusterName: "opensearch-cluster"
+nodeName: "{{ inventory_hostname }}"
+networkHost: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+interim_string: "{% for host in groups['all'] %}{{hostvars[host].ansible_eth0.ipv4.address}} {% endfor %}"
+nodesIPv4: "{{ interim_string.split() }}"
