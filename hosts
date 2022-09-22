@@ -1,0 +1,4 @@
+[primary]
+opensearch-node-1 ansible_host=10.0.1.132 ansible_connection=ssh ansible_user=ec2-user
+
+[secondary]

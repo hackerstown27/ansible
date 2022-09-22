@@ -1,0 +1,6 @@
+---
+# handlers file for opensearch-dashboard-setup
+- name: Restart Opensearch Dashboard
+  ansible.builtin.service:
+    name: opensearch-dashboards.service
+    state: restarted

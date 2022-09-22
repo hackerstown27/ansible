@@ -1,0 +1,13 @@
+- name: "Setting Up Opensearch"
+  hosts: all
+  become: yes  
+  become_user: root
+  roles:
+    - opensearch-setup
+
+- name: "Setting Up Opensearch Dashboard"
+  hosts: primary
+  become: yes  
+  become_user: root
+  roles:
+    - opensearch-dashboard-setup

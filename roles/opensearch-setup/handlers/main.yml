@@ -1,0 +1,6 @@
+---
+# handlers file for opensearch-setup
+- name: Restart Opensearch
+  ansible.builtin.service:
+    name: opensearch.service
+    state: restarted
